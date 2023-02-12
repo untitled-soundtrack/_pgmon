@@ -18,7 +18,7 @@ Um zum Pokedéx zu gelangen, muss man den linken Button in der Headerbar (Icon m
 
 ## Hintergrund
 
-Um einige Funktionen von Vue.js und den Elementen von Material Design Lite zu üben,wurden folgende Dinge verwendet:
+Um einige Funktionen von Vue.js und den Elementen von Material Design Lite zu üben, wurden folgende Dinge verwendet:
 
 - MDL Cards | Verwendung und Befüllung mit den Daten aus dem Backend (Pokémon Details)
 - Material Symbole | Der Poké-Typ wird als jeweiliges Material Symbol angezeigt
