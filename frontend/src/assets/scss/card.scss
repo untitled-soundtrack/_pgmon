@@ -1,0 +1,130 @@
+@import 'base/variables';
+
+/*
+main::before{
+  content:'';
+  display: block;
+  width: 100%;
+  height: $height-header;
+}*/
+
+
+main{
+  box-sizing: border-box;
+  padding-top: $height-header;
+  height: calc(100vh - ($height-footer + $height-header));
+}
+
+.sightingsWrapper{
+  box-sizing: border-box;
+  padding: 25px 0;
+  height: 100%;
+}
+
+.sightingsCountMsg, .noListEntry{
+  background-color: $color-pokemon-blue;
+  color: $color-light;
+  margin: 0 25px;
+  padding: 8px 0;
+  font-size: 24px;
+  text-align: center;
+}
+
+.mdl-card {
+  animation: move 2s;
+  border-radius: 10px;
+  width: 50%;
+  margin-top: 40px;
+  margin-left:auto;
+  margin-bottom: 10px;
+  margin-right: auto;
+  overflow:visible;
+  z-index: auto;
+
+  &:hover{
+    background-color: #c1bfbf71;
+  }
+}
+
+.poke_media {
+  border-radius: 5px;
+  max-width: 100%;
+  background-color:$color-pokedex;
+}
+
+.poke_icon {
+  margin-left: 0.5vw;
+}
+
+.poke_name {
+  font-family: $font-text;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-right: 1vw;
+}
+
+.poke_groesse {
+  font-family: $font-text;
+  font-size: 2rem;
+  margin-left: 1vw;
+}
+
+.poke_gewicht {
+  font-family: $font-text;
+  font-size: 2rem;
+  margin-left: 1vw;
+}
+
+.poke_typ {
+  border-radius: 5vw;
+  padding: 0.5vw;
+  margin: 0.3vw;
+  background-color: $color-poketyp;
+}
+
+.typ {
+  font-family: $font-text;
+  font-size: 2rem;
+  margin-left: 1vw;
+
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes move {
+  from {  transform: translateY(-500px)    }
+  to   {  transform: translateY() }
+}
+
+ul.mdl-list{
+    position: static;
+    height: 100%;
+    overflow-y: auto;
+    margin: 0 5px;
+    padding: 0;
+    scrollbar-width:auto;       /* "auto" or "thin" */
+    scrollbar-color: $color-pokemon-blue #ced4da;   /* scroll thumb and track */
+
+    li{
+      // border-bottom: 2px solid $color-pokemon-yellow;
+      font-family: $font-text;
+      font-weight: bold;
+      font-size: 2.2rem;
+      .list-id{
+        color: #adb5bd;
+      }
+      .list-name{
+        color: $color-pokemon-blue;
+        margin-left: 8px;
+      }
+    }
+}
+

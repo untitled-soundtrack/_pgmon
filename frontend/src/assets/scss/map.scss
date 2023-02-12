@@ -1,0 +1,14 @@
+@import 'base/variables';
+@import 'base/fonts';
+
+@mixin mainSpacing($height) {
+
+  margin-bottom: $height;
+}
+
+
+
+.vue-map, .vue-map-container{
+  width: 100%;
+  height: calc(100vh - $height-footer);
+}

@@ -1,0 +1,20 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    url: "jdbc:h2:./pgmondb;AUTO_SERVER=true"
+    username: "sa"
+    password: ""
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+
+values:
+  jwtKey: "foobarfoobarfoobarfoobarfoobarfoobar"
+
+server:
+  port: 8082
+  error:
+    include-message: always

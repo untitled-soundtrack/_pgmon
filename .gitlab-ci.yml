@@ -1,0 +1,62 @@
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2"
+  GIT_STRATEGY: "clone"
+
+stages:
+  - frontend
+  - backend
+  - deploy
+
+build-frontend:
+  stage: frontend
+  image: node:16.8.0-alpine3.14
+  cache:
+    - key:
+        files:
+          - ./frontend/package-lock.json
+      paths:
+        - .npm/
+  before_script:
+    - cd frontend
+    - npm ci --cache ../.npm --prefer-offline
+  script:
+   - npm install
+   - npm run build
+  artifacts:
+    paths:
+     - "frontend/dist/*"
+
+build-backend:
+  stage: backend
+  image: maven:3-openjdk-18-slim
+  cache:
+    paths:
+      - .m2/
+  script:
+    - mvn -B -DskipTests clean package -pl \!frontend
+    - mv backend/target/*.jar .
+  artifacts:
+    paths:
+    - "*.jar"
+
+prod: 
+  stage: deploy
+  image: kroniak/ssh-client
+  only:
+    - main
+  before_script:
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+  script:
+    - >
+     jarfile=$(ls *.jar)
+    - >
+     echo "jar file found: $jarfile"
+    - >
+     ssh -o StrictHostKeyChecking=no $USER@lbartner-01.media.fhstp.ac.at "cd ~; ./managePgmon.sh $jarfile stop"
+    - >
+     scp -o StrictHostKeyChecking=no $jarfile $USER@lbartner-01.media.fhstp.ac.at:
+    - >
+     ssh -o StrictHostKeyChecking=no $USER@lbartner-01.media.fhstp.ac.at "cd ~; ./managePgmon.sh $jarfile start"

@@ -1,0 +1,60 @@
+@import 'base/variables';
+
+/*
+main::before{
+  content:'';
+  display: block;
+  width: 100%;
+  height: $height-header;
+}*/
+
+
+main{
+  box-sizing: border-box;
+  padding-top: $height-header;
+  height: calc(100vh - ($height-footer + $height-header));
+}
+
+.sightingsWrapper{
+  box-sizing: border-box;
+  padding: 25px 0;
+  height: 100%;
+}
+
+.sightingsCountMsg, .noListEntry{
+  background-color: $color-pokemon-blue;
+  color: $color-light;
+  margin: 0 25px;
+  padding: 8px 0;
+  font-size: 24px;
+  text-align: center;
+}
+
+ul.mdl-list{
+    position: static;
+    height: 100%;
+    overflow-y: auto;
+    margin: 0 25px;
+    padding: 0;
+    scrollbar-width: thin;          /* "auto" or "thin" */
+    scrollbar-color: $color-pokemon-blue #ced4da;   /* scroll thumb and track */
+
+    li{
+      border-bottom: 2px solid $color-pokemon-yellow;
+      font-family: $font-text;
+      font-weight: bold;
+      font-size: 2.2rem;
+      .list-id{
+        color: #adb5bd;
+      }
+      .list-name{
+        color: $color-pokemon-blue;
+        margin-left: 8px;
+      }
+
+      &:hover{
+        background-color: #f8f8f8;
+      }
+    }
+}
+

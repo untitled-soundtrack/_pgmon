@@ -1,0 +1,21 @@
+@import './base/fonts';
+@import './base/variables';
+
+
+html, body{
+  font-size: 62.5%;
+  overflow: hidden;
+}
+
+#app{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/*
+main::before{
+  display: block;
+  content: '';
+  width: 100%;
+  height: $height-header;
+}*/
